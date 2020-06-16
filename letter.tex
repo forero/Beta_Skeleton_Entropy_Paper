@@ -139,30 +139,27 @@ The results are presented in Section 4 to finally summarize our Conclusions in S
 
 \section{Graphs and Entropy}
 
-\subsection{The Beta-Skeleton Graph}
+\subsection{The $\beta$-Skeleton Graph}
 
-The $\beta$-Skeleton is a non-directed graph that determines the connectivity between pairs
-of points as a function of the real parameter $\beta$ \citep{1985Kirkpatrick}. 
-Each pair of points describes the existence of an exclusion region that changes with $\beta$. 
-If the region is empty, then the two points are joined by an edge.
-\textbf{This region is defined as the intersection of two congruent spheres (circles, in 2D) which have some characteristics according to $\beta$:}
+The $\beta$-Skeleton is a non-directed graph that determines the
+connectivity between pairs of points as a function of the real
+parameter $\beta$ \citep{1985Kirkpatrick}. 
+Each pair of points describes the existence of an exclusion region
+that changes with $\beta$.  
+If the region is empty, then the two points are joined by an edge. 
 
-\begin{itemize}
-    \item \textbf{$\beta \leq 1$: } \textbf{Both spheres touch the points and their radius is $D/\beta$, with $D$ the distance between the points.}
-    \item \textbf{$\beta = 1$: }\textbf{The spheres are concentric.}
-    \item \textbf{$\beta\geq 1$: }\textbf{The center of the spheres is located along the line connecting the pair.}
-    \item \textbf{$\beta>1$: }\textbf{The radius of the spheres is equal to $\beta D$ and each sphere touches only one point.}
-
-
-\end{itemize}
-
+\textbf{We use the lune definition for this exclusion region.
+The lune is defined as the intersection of two congruent spheres that
+intersect in the two points under consideration.
+The diameter, $D$, of the spheres (circles in 2D) depends on the
+distance between the two points, $d$, and the value of $\beta$; for
+$\beta \leq 1$, $D=d/\beta$; otherwise $D=d\beta$.
+Under this definition the volume of the exclusion region is a
+monotonic function of $\beta$.}
 Figure \ref{fig:example} illustrates how the exclusion region changes with $\beta$ for 
 two points in the plane. 
-For $\beta=0$ the exclusion region is just a line that joins both nodes, for $\beta=1$
-this region is an sphere%circle? No estamos hablando de la figura?
-with a diameter equal to the distance between the nodes and 
-as $\beta$ tends to infinity the exclusion region is the same as the space between two infinite and parallel planes that pass the nodes and that are perpendicular to the line connecting them.
-The 1-Skeleton is also known as the Gabriel Graph, while the $2$-skeleton corresponds to the Relative Neighbor Graph (RNG).
+The 1-Skeleton is also known as the Gabriel Graph, while the
+$2$-skeleton corresponds to the Relative Neighbor Graph (RNG). 
 
 As the exclusion regions grows it is less likely to find pairs that are connected.
 Figure \ref{fig:connectionsBeta} shows the $\beta$-skeleton for a set of dark matter halos extracted from a cosmological simulation that are distributed inside an spherical shell.
@@ -195,8 +192,12 @@ $\beta$-skeleton graphs shown in Figure \ref{fig:connectionsBeta}.
 \begin{figure}
     \centering
     \includegraphics[width=0.45\textwidth]{betas.pdf}
-   \caption{Exclusion regions between two points in the $\beta$-skeleton definition for
-    different $\beta$ values.
+   \caption{To build the $\beta$-skeleton regions 
+     the exclusion region between two points is defined as the
+     intersection between two congruent spheres that intersect in the
+     two points under consideration. 
+     The shape of the intersection and the sphere radius changes with
+     $\beta$.
  \label{fig:example}}  
 \end{figure} 
 
