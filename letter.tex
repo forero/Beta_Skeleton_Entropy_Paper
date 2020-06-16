@@ -1,0 +1,479 @@
+% Using mnras_template.tex
+%
+% LaTeX template for creating an MNRAS paper
+%
+% v3.0 released 14 May 2015
+% (version numbers match those of mnras.cls)
+%
+% Copyright (C) Royal Astronomical Society 2015
+% Authors:
+% Keith T. Smith (Royal Astronomical Society)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[fleqn,usenatbib]{mnras}
+\usepackage[T1]{fontenc}
+
+% Allow "Thomas van Noord" and "Simon de Laguarde" and alike to be sorted by "N" and "L" etc. in the bibliography.
+% Write the name in the bibliography as "\VAN{Noord}{Van}{van} Noord, Thomas"
+\DeclareRobustCommand{\VAN}[3]{#2}
+\let\VANthebibliography\thebibliography
+\def\thebibliography{\DeclareRobustCommand{\VAN}[3]{##3}\VANthebibliography}
+
+%%%%% AUTHORS - PLACE YOUR OWN PACKAGES HERE %%%%%
+\usepackage{graphicx}	% Including figure files
+\usepackage{amsmath}	% Advanced maths commands
+\usepackage{amssymb}	% Extra maths symbols
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%% AUTHORS - PLACE YOUR OWN COMMANDS HERE %%%%%
+
+
+\newcommand{\vdag}{(v)^\dagger}
+\newcommand\latex{La\TeX}
+\newcommand{\Msun}{\,{\rm M}$_{\odot}$\,}
+\newcommand{\Msunh}{\,{\rm M}$_{\odot}$\,\,\ifmmode h^{-1}\else $h^{-1}$\fi}
+\newcommand{\kms}{\,{\rm km s}\ifmmode ^{-1}\,\else $^{-1}$\,\fi}
+\newcommand{\Mpch}{\,{\rm Mpc}\,\ifmmode h^{-1}\else $h^{-1}$\fi}
+\newcommand{\kpch}{\,{\rm kpc}\,\ifmmode h^{-1}\else $h^{-1}$\fi}
+\newcommand{\kpc}{\,{\rm kpc}\,}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%
+
+\title[Cosmic Web Graph Entropy]{The cosmic web through the lens of graph entropy}
+
+\author[Garc\'ia-Alvarado et al.]{
+M. V. Garc\'ia-Alvarado,$^{1}$\thanks{E-mail: mv.garcia@uniandes.edu.co}
+X.-D. Li$^{2}$
+and J. E. Forero-Romero$^{1}$\thanks{E-mail: je.forero@uniandes.edu.co}
+\\
+% List of institutions
+$^{1}$Departamento de F\'isica, Universidad de los Andes, Cra. 1 No. 18A-10 Edificio Ip, CP 111711, Bogot\'a, Colombia\\
+$^{2}$School of Physics and Astronomy, Sun Yat-Sen University, Guangzhou 510297, P.R.China\\
+}
+
+% These dates will be filled out by the publisher
+\date{Accepted XXX. Received YYY; in original form ZZZ}
+
+% Enter the current year, for the copyright statements etc.
+\pubyear{2020}
+
+% Don't change these lines
+\begin{document}
+\label{firstpage}
+\pagerange{\pageref{firstpage}--\pageref{lastpage}}
+\maketitle
+
+% Abstract of the paper
+\begin{abstract}
+  We explore the information theory entropy of a graph as a scalar to quantify the cosmic web.
+  We use simulations to gauge the influence of survey geometry, cosmic variance, 
+  redshift space distortions, redshift evolution, cosmological parameters and 
+  spatial number density. 
+   Cosmic variance shows the least important influence while
+   changes from the survey geometry, redshift space distortions, cosmological 
+   parameters and redshift evolution produce larger changes on the
+   order of $10^{-2}$ bits.
+   We find that $\sigma_8$ shows the strongest correlation with the graph entropy.
+   The largest influence on the graph entropy comes from changes in the 
+   number density of clustered points, with effects on the order of $0.2$ bits.
+   These results show that the graph entropy is a promising new tool to probe the cosmic 
+   web; it is simple to compute and can be applied both to simulations and observational data 
+   from large galaxy redshift surveys.
+   This definition can be naturally applied to any graph built on other cosmological 
+   probes such as cosmic microwave background maps, weak lensing maps or reconstructed
+   density and peculiar velocity fields.
+   \end{abstract}
+\begin{keywords}
+cosmology: large-scale structure of Universe -- methods: data analysis.
+\end{keywords}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
+\section{Introduction}
+
+The cosmic web is one of the most salient features of the matter distribution
+on cosmological scales. 
+There is a great variety of methods striving to locally describe this complex 
+structure by classifying a region as belonging either
+to a void, filament, wall or cluster \textbf{\citep{2018MNRAS.473.1195L, 2011MNRAS.414..350S}}.
+
+Global descriptors are also useful to describe the topological structure of this web.
+Quantities such as the topological invariants described by  the genus
+\citep{1986ApJ...309....1H, 1986ApJ...306..341G} the Minkowski functionals 
+\citep{1997ApJ...482L...1S}, the Betti numbers
+\citep{2013JKAS...46..125P,2017MNRAS.465.4281P}  \textbf{and the skeleton formalism \citep{2008MNRAS.383.1655S}} have been widely applied to describe the
+cosmic web.
+
+Another scalar, the information theory entropy based on the inhomogeneous 
+spatial matter density in the cosmic web,
+$S=-\int\rho(\bf{r})\log\rho(\bf{r}) d\bf{r}$, has
+been used to derive analytical expressions for its cosmological evolution
+\citep{2004PhRvL..92n1302H}, measurements from surveys
+\citep{2015MNRAS.454.2647P}
+and estimates from simulations \citep{2020MNRAS.491.5447V}.
+
+The same information theory principles can be extended to measure the entropy built 
+on graphs  used to describe the cosmic web. 
+This entropy can be computed from the number of connections for each point in the graph, 
+which is a property that  can be computed for commonly used graphs in this context, such as  minimal spanning trees \citep{1985MNRAS.216...17B}, Delaunay tessellations \citep{2007MNRAS.382....2R}, neighbor networks within a fixed linking length \citep{2016MNRAS.459.2690H} or the $\beta$-skeleton \citep{2019MNRAS.485.5276F}. 
+For any of those graphs one can estimate the probability of a point having $n$ connections, $P_n$, and from these values a global entropy can be defined as $S = \sum_{P_n>0}-P_n\log_2{P_n}$.
+
+
+\textbf{It is already shown that the study of cosmic connectivity can be useful to describe the cosmic web \citep{10.1093/mnras/stz3535}.  Therefore, for any of the mentioned graphs one can estimate ... para meterlo en el parrafo de arriba. O ponerlo al final}
+
+The purpose of this to letter is to advocate the information theory entropy on a graph
+as a global scalar to describe the cosmic web.
+%As a part of the skeleton formalism,
+We use the $\beta$-skeleton graph to explore a whole graph family 
+by varying the real valued parameter $\beta$.
+As cosmic web tracers we use dark matter halos from cosmological N-body simulations. 
+This letter is structured as follows. 
+In Section 2 we present the $\beta$-skeleton and the graph entropy definition.
+In Section 3 we summarize the main features of the cosmological simulations we use and 
+the basic setup of the numerical experiments we want to run.
+The results are presented in Section 4 to finally summarize our Conclusions in Section 5.
+
+\section{Graphs and Entropy}
+
+\subsection{The Beta-Skeleton Graph}
+
+The $\beta$-Skeleton is a non-directed graph that determines the connectivity between pairs
+of points as a function of the real parameter $\beta$ \citep{1985Kirkpatrick}. 
+Each pair of points describes the existence of an exclusion region that changes with $\beta$. 
+If the region is empty, then the two points are joined by an edge.
+\textbf{This region is defined as the intersection of two congruent spheres (circles, in 2D) which have some characteristics according to $\beta$:}
+
+\begin{itemize}
+    \item \textbf{$\beta \leq 1$: } \textbf{Both spheres touch the points and their radius is $D/\beta$, with $D$ the distance between the points.}
+    \item \textbf{$\beta = 1$: }\textbf{The spheres are concentric.}
+    \item \textbf{$\beta\geq 1$: }\textbf{The center of the spheres is located along the line connecting the pair.}
+    \item \textbf{$\beta>1$: }\textbf{The radius of the spheres is equal to $\beta D$ and each sphere touches only one point.}
+
+
+\end{itemize}
+
+Figure \ref{fig:example} illustrates how the exclusion region changes with $\beta$ for 
+two points in the plane. 
+For $\beta=0$ the exclusion region is just a line that joins both nodes, for $\beta=1$
+this region is an sphere%circle? No estamos hablando de la figura?
+with a diameter equal to the distance between the nodes and 
+as $\beta$ tends to infinity the exclusion region is the same as the space between two infinite and parallel planes that pass the nodes and that are perpendicular to the line connecting them.
+The 1-Skeleton is also known as the Gabriel Graph, while the $2$-skeleton corresponds to the Relative Neighbor Graph (RNG).
+
+As the exclusion regions grows it is less likely to find pairs that are connected.
+Figure \ref{fig:connectionsBeta} shows the $\beta$-skeleton for a set of dark matter halos extracted from a cosmological simulation that are distributed inside an spherical shell.
+The $\beta$-skeleton is a connected graph for $1\leq \beta\leq 2$
+(i.e. all nodes have at least
+one connection) and could be a disconnected graph for $\beta>2$ \citep{bose2002spanning}.
+More details on the applications of this graph on large scale structure data
+can be found in \citep{2019MNRAS.485.5276F}.
+
+\subsection{Graph Entropy Definition}
+
+After the graph has been constructed it is possible to estimate $P_n$, the probability of 
+a node to have $n$ connections.
+From these compute we define the graph entropy as
+
+\begin{equation}
+\centering
+    S = \displaystyle\sum_{P_n>0}-P_n\log_2{P_n}.
+    \label{ecuacionEntropia}
+\end{equation}
+%
+This graph entropy definition is the simplest possible as it is global and only 
+takes into account the degree of connectivity \citep{2012Entrp..14..559M}. 
+Figure \ref{fig:probabilities} shows the corresponding $P_n$ distributions for the 
+$\beta$-skeleton graphs shown in Figure \ref{fig:connectionsBeta}.
+
+
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.45\textwidth]{betas.pdf}
+   \caption{Exclusion regions between two points in the $\beta$-skeleton definition for
+    different $\beta$ values.
+ \label{fig:example}}  
+\end{figure} 
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=1.0\textwidth]{beta123_2.pdf}
+    \caption{$\beta$-Skeleton graph for a set of dark matter halos arranged over a shell
+    with inner radius $250$ \Mpch and outer radius $300$ \Mpch.
+    Each panel correspond to different values values of $\beta$ ($1$, $2$ and $\beta=3$).The case of $\beta=2$ corresponds to the Relative Neighbor Graph.
+    As $\beta$ increases links between nodes are lost. The probability of being a node with $n$ connections changes with $\beta$.}
+\label{fig:connectionsBeta}
+\end{figure*}
+
+\begin{figure}
+    \includegraphics[width=0.45\textwidth]{probabilities.pdf}
+    \caption{Probabilities of having $n$ connections, $P_n$ for three different values of
+    $\beta$. The input dataset corresponds to the shell in Figure \ref{fig:connectionsBeta}.
+    The graph entropy summarizes the changes in the $P_n$ distribution as a function of $\beta$.}
+    \label{fig:probabilities}
+\end{figure}
+
+
+\section{Methods}
+
+
+\subsection{Simulations and Mock Catalogs}
+
+We use data products from the Abacus project \citep{abacus}.
+This project is a set of dark matter only N-body simulations that follows
+the growth of structure in an explicit cosmological setup.
+It includes simulations with different box sizes and cosmological parameters.
+
+Here we focus on the simulations done a cubic box of $720$\Mpch on a side
+with $1440^3$ particles. 
+This resolution corresponds to a particle mass of $\sim1\times10^{10}$ \Msunh.
+The same box was run with $20$ different initial conditions at a fixed value for
+the cosmological parameters and also with fixed initial conditions and $40$ different
+sets of cosmological parameters.
+
+We use the Friend-of-Friends catalogs to build all the datasets to be used
+as an input to the $\beta$-skeleton. In all cases we take only into account halos
+with a maximum circular velocity larger than $300$\kms. 
+We then apply different geometrical cuts and changes to their 3D positions to build 
+our final mock catalogs.
+
+We build mock catalogs with two different geometries: spheres and spherical shells.
+Both geometries have a maximum radius of $300$ \Mpch.
+The shells have an inner radius of $250$\Mpch.
+For each one of these geometries we build the corresponding random catalogs
+by keeping their radial coordinate with respect to the geometrical center and 
+randomize its angular coordinates.
+We also produced catalogs with and without Redshift Space Distortion (RSD) effects. 
+To study the effect of redshift evolution we use spheres extracted from
+the snapshots at redshifts of $z=0.1$, $0.3$, $0.5$, $0.7$, $1$ and $1.5$.
+
+
+
+\subsection{Numerical Experiments}
+
+For each mock catalog we build the $\beta$-Skeleton and estimate each $P_n$ as  $\frac{N_e}{T_n}$, where $N_e$ is the number of nodes with $n$ connections and $N$ is the
+total number of nodes in the data set.
+From this set of $P_n$ values we measure the graph entropy using Equation \ref{ecuacionEntropia}.
+
+We only use the values $\beta=1.0$, $1.5$, $2.0$, $2.5$, $3.0$, $3.5$, $4.0$, $4.5$ and $5$.
+In what follows we preset results as a function of $\beta$ by continous lines.
+We have checked that including more $\beta$ values does not significantly change
+our results. 
+In other words the graph entropy turns out to be a slowly varying function of $\beta$.
+
+
+The product of the calculation of the entropy on all the data sets prepared, allowed us to
+describe the effects of the variation of the parameter $\beta$ on various characteristics
+of mock catalogs. 
+Here we focus on quantifying the effects of: cosmic Variance, geometry, RSD, redshift
+evolution, cosmological parameters and spatial number density.
+
+
+\begin{figure}
+    \includegraphics[width=0.45\textwidth]{entropy.pdf}
+    \caption{Graph entropy as a function of the parameter $\beta$ 
+    for clustered and random points distributed inside a sphere. \label{fig:entropy}}
+\end{figure}
+
+
+
+
+\section{Results}
+\label{sec:results}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.42\textwidth]{cosmic_variance.pdf} 
+    \includegraphics[width=0.42\textwidth]{geometry.pdf} 
+    \includegraphics[width=0.42\textwidth]{rsd.pdf} 
+    \includegraphics[width=0.42\textwidth]{redshift.pdf} 
+    \includegraphics[width=0.42\textwidth]{param.pdf}
+    \includegraphics[width=0.42\textwidth]{random_clustered_n1.pdf}
+    \caption{Influence of different effects on the graph entropy. In all cases we 
+    report the changes in entropy from a reference value. 
+    Details are explained in the Results section. $a)$ Cosmic variance. 
+    $b)$ Survey geometry. 
+    $c)$ Redshift Space Distortions (RSD).
+    $d)$ Redshift evolution.
+    $e)$ Cosmological parameters. We only show the results for $\sigma_8$, 
+    the parameter that shows the strongest correlation with the graph entropy.
+    The plot corresponds to the entropy computed for the $1$-skeleton at $z=0.1$. 
+    $f)$ Number density. 
+    This calculation is performed on $20$ different spheres at $z=0.1$.
+    A different percentage (shown in the caption) of these points are sampled. 
+    We show the difference with respect to the entropy measured on the spheres 
+    of sampled random points.\label{fig:diferencias}}
+\end{figure*}    
+
+
+
+Figure \ref{fig:entropy} shows the graph entropy as a function of $\beta$ for
+clustered and random data distributed over a sphere.
+The most important message from this plot is that the entropy can distinguish between
+clustered and random points.
+We see that the entropy follows a decreasing trend with increasing $\beta$ that seems to be interrupted when $\beta=2$ (the RNG), which represents a local minimum of the curve. 
+This differentiates the point at which the constructed graph goes from being fully connected, to have some isolated nodes,
+\textbf{which is a property of the called proximity graphs. The transition between a $\beta$-Skeleton graph with $1<\beta\leq2$ and a graph with $\beta>2$ always comes with the loss of a connected graph.}
+
+From that point onwards the entropy for the clustered points starts to increase again with $\beta$, albeit slower than for the case $\beta<2$.
+Another interesting point is that around $\beta=5$ the two entropies are equal. 
+This point corresponds to the extreme of a very sparse graph where the two different point distributions become indistinguishable from the point of view of the entropy.
+The general shape shown in Figure \ref{fig:entropy} is conserved in all cases. 
+In what follows we quantify the changes induced by different effects.
+
+\subsection{Cosmic Variance}
+
+We measure the effects of cosmic variance by comparing the entropy of the spherical 
+mocks built from the $20$ different realizations of the standard cosmology at $z=0.1$ without considering the effects of RSD. 
+Panel $a)$ in Figure \ref{fig:diferencias} shows the entropy difference with respect to a reference mock.
+The variance of the entropy differences is on the order of $10^{-3}$ bits, almost 
+independent of $\beta$.
+The same result holds for mocks with shell geometry.
+
+
+
+\subsection{Geometry}
+
+We evaluate geometry influence by comparing spheres and shells.
+We compare each spherical mock with its corresponding shell.
+This is done at $z=0.1$ without RSD effects over the $20$ different realization 
+of the standard cosmology.
+Panel $b)$ in Figure \ref{fig:diferencias} shows that the entropy difference has a strong dependence with $\beta$. 
+For $\beta=1$ points on the spherical distribution have $8\times 10^{-2}$ more bits of entropy than shells.
+For values around $\beta=2$ this difference drops to negative values (shells have more entropy than spheres) but only on the order of $1\times10^{-2}$ bits.
+
+
+
+
+\subsection{Redshift Space Distortions}
+
+We measured the RSD influence on the spheres extracted from the $20$ different realization of the standard cosmology at $z=0.1$.
+In the mock building process the RSD effect is applied before making the geometrical cut.
+Panel $c)$ in Figure \ref{fig:diferencias} shows a similar picture than the one found in the previous subsection.
+Namely, a strong dependence for $\beta\leq 2$, with more entropy in the data without RSD and a flat response for $\beta\geq 2$.
+In this case the differences continue to be on the order of $10^{-2}$ bits, with the
+largest difference located at $\beta=1$.
+
+
+\subsection{Redshift Evolution}
+We use six spheres to measure the redshift evolution of the graph entropy. 
+Each sphere comes from a simulation with the standard cosmology with redshifts of
+$z=0.1$, $0.3$, $0.5$, $0.7$, $1.0$ and $1.5$. 
+We used the spheres in comoving coordinates without taking into account any form of RSD.
+Panel $d)$ in Figure \ref{fig:diferencias} shows the entropy evolution computed for values
+of $\beta=1$, $2$ and $3$.
+For each $\beta$ we show the entropy differences with respect to the entropy at $z=0.1$.
+Each $\beta$ value produces a different entropy redshift evolution.
+The largest variation is $3\times 10^{-2}$ bits for the $1$-skeleton between the redshift of
+$z=1.5$ and $z=0.1$, where the entropy decreases monotonously with decreasing redshift.
+This redshift evolution is different for the $2$-skeleton and the $3$-skeleton; the changes 
+are not monotonous and less pronounced.
+
+\subsection{Cosmological Parameters}
+The Abacus simulations have $40$ different realization with different values for the
+cosmological  parameters $H_0$, $\Omega_{DE}$, $\Omega_{M}$, $n_s$, $\sigma_8$ and $w_0$.
+We measure the entropy differences with respect to the entropy for the cosmology of 
+reference in the $40$ different spheres at $z=0.1$, without RSD effects, 
+for the skeletons with $\beta=1$, $2$ and $3$.
+Panel $e)$ in Figure \ref{fig:diferencias} 
+shows the entropy differences as a function of $\sigma_8$ for $\beta=1$.
+Increasing values of $\sigma_8$ correspond to lower entropy values. 
+This is the strongest correlation we find between entropy and a cosmological parameter.
+For $\beta=2$ the correlation is weaker and for $\beta=3$ the correlation inverses its
+trend.
+The different cosmological parameters induce changes on the entropy of magnitude $3\times10^{-2}$ bits at most.
+
+\subsection{Number densities}
+
+We prepare and additional dataset where we randomly 
+sample a percentage (between $10\%$ and $100\%$ in jumps of $10\%$) 
+of the points from the original random and clustered spheres.
+Although the number density changes, the different points have the 
+same correlation function as they are dominated by dark matter halos with circular velocities $\approx 300$ \kms.
+
+The entropy changes in this case are the largest among our series of experiments.
+Panel $e)$ in Figure \ref{fig:diferencias} shows the entropy differences 
+with respect to the corresponding random sphere as a function
+of $\beta$.
+The entropy differences decrease with the number density. 
+The differences range between $0.05$ to $0.2$ bits.
+
+We checked that the entropy only changes significantly in the clustered points.
+If we compute the entropy on the spheres with random distribution of points 
+with varying number densities, then the entropy changes among those spheres 
+is only on the order of $0.01$ bits.
+
+With this test we find that the entropy is sensitive to changes in the 
+dataset that are invisible to the two-point correlation function.
+Furthermore, these changes are only visible on points that are not randomly
+distributed.
+The main property that changes with the number density is the visual appearance of the
+cosmic web in the dataset. 
+As the number density decreases the voids in the distribution become
+larger and the filamentary patterns thinner.
+When we estimate the typical void size in the datasets with changing number 
+density, we find that the typical void size increases with decreasing number density, 
+as expected.
+The entropy changes we find here correlate inversely with void size: larger entropy 
+values correspond to smaller void sizes.
+
+
+
+
+\section{Conclusions}
+
+In this letter we presented the graph entropy as a new scalar to 
+quantify the large scale structure of the Universe.
+The entropy definitions we use is a global quantity based on 
+the definition commonly used in information theory.
+It uses the probability of having $n$ connections, $P_n$, to build the 
+scalar $S=\sum_{P_n>0} -P_n  \log_2 P_n$. 
+We based our quantitative analysis on the $\beta$-skeleton graph 
+built on mock catalogs constructed from cosmological N-body simulations.
+
+We measured that the graph entropy is of order unity and ranges 
+between $1.6$ and $3.2$ bits.
+Then we tested the influence on the graph entropy of six major factors: 
+cosmic variance, survey geometry, redshift space distortions, redshift evolution, cosmological parameters and number densities.
+
+We found that the weakest influence is presented by cosmic variance with changes 
+on the order of $10^{-3}$ bits.
+The next factors in order of importance were the survey geometry, RDS, redshift evolution,
+cosmological parameters with entropy changes on the order of $10^{-2}$ bits.
+The strongest influence on the entropy appears in clustered data at different number 
+densities.
+This difference is in the range of $0.05$ to $0.2$ bits.
+
+From these results we conclude that graph entropy can be a useful scalar 
+to quantify the cosmic web. 
+On the other hand, using the graph entropy to disentangle different cosmological effects
+seems to be a more challenging task. 
+The influence of survey geometry, redshift evolution and cosmological parameters 
+all seem to be on the same order of magnitude when measured in the entropy.
+One way to make stand out an effect over the others (for instance, the influence of
+$\sigma_8$ over RSD) might be comparing the results of clustered measurements against
+a random counterpart with the same geometry and number density.
+
+Further tests of the applicability to observational data and other graphs 
+are necessary beyond the  promising results presented here.
+An incomplete list of experiments that might complement its usage in the context of
+cosmology are: using this entropy to check for isotropy (e.g. measuring the entropy from
+different parts of the sky); measuring the entropy in different modified gravity theories;
+building graphs and measuring the entropy from 
+other quantities, i.e. features in the Cosmic Microwave Background, weak lensing peaks,
+basin points from reconstructed peculiar velocity fields.
+
+\section*{Acknowledgements}
+XDL acknowledges the support from NSFC grant (No. 11803094).
+
+\bibliographystyle{mnras}
+\bibliography{references}
+
+%\bsp	% typesetting comment
+%\label{lastpage}
+\end{document}
