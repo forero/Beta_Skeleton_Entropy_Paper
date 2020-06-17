@@ -147,7 +147,9 @@ This letter is structured as follows.
 In Section 2 we present the $\beta$-skeleton and the graph entropy definition.
 In Section 3 we summarize the main features of the cosmological simulations we use and 
 the basic setup of the numerical experiments we want to run.
-The results are presented in Section 4 to finally summarize our Conclusions in Section 5.
+The results are presented in Section 4.
+We discuss the meaning of our findings on the graph entropy in Section
+5 to finally summarize our Conclusions in Section 6.  
 
 \section{Graphs and Entropy}
 
@@ -282,11 +284,9 @@ our results.
 In other words the graph entropy turns out to be a slowly varying function of $\beta$.
 
 
-The product of the calculation of the entropy on all the data sets prepared, allowed us to
-describe the effects of the variation of the parameter $\beta$ on various characteristics
-of mock catalogs. 
-Here we focus on quantifying the effects of: cosmic Variance, geometry, RSD, redshift
-evolution, cosmological parameters and spatial number density.
+Our experiments focus on quantifying the effects on the entropy from:
+cosmic variance, mock geometry, RSD, redshift evolution, cosmological
+parameters and spatial number density. 
 
 
 \begin{figure}
@@ -303,12 +303,12 @@ evolution, cosmological parameters and spatial number density.
 
 \begin{figure*}
     \centering
-    \includegraphics[width=0.42\textwidth]{cosmic_variance.pdf} 
-    \includegraphics[width=0.42\textwidth]{geometry.pdf} 
-    \includegraphics[width=0.42\textwidth]{rsd.pdf} 
-    \includegraphics[width=0.42\textwidth]{redshift.pdf} 
-    \includegraphics[width=0.42\textwidth]{param.pdf}
-    \includegraphics[width=0.42\textwidth]{random_clustered_n1.pdf}
+    \includegraphics[width=0.41\textwidth]{cosmic_variance.pdf} 
+    \includegraphics[width=0.41\textwidth]{geometry.pdf} 
+    \includegraphics[width=0.41\textwidth]{rsd.pdf} 
+    \includegraphics[width=0.41\textwidth]{redshift.pdf} 
+    \includegraphics[width=0.41\textwidth]{param.pdf}
+    \includegraphics[width=0.41\textwidth]{random_clustered_n1.pdf}
     \caption{Influence of different effects on the graph entropy. In all cases we 
     report the changes in entropy from a reference value. 
     Details are explained in the Results section. $a)$ Cosmic variance. 
@@ -324,7 +324,6 @@ evolution, cosmological parameters and spatial number density.
     We show the difference with respect to the entropy measured on the spheres 
     of sampled random points.\label{fig:diferencias}}
 \end{figure*}    
-
 
 
 Figure \ref{fig:entropy} shows the graph entropy as a function of $\beta$ for
@@ -343,13 +342,19 @@ For $\beta\leq 2$ the probability of having $0$ connections is zero
 (i.e. the graph is fully connected), while for $\beta>2$ that
 probability is different from zero.}
 
-From that point onwards the entropy for the clustered points starts to
-increase again with $\beta$, albeit slower than for the case
-$\beta<2$. 
-Another interesting point is that around $\beta=5$ the two entropies are equal. 
-This point corresponds to the extreme of a very sparse graph where the two different point distributions become indistinguishable from the point of view of the entropy.
-The general shape shown in Figure \ref{fig:entropy} is conserved in all cases. 
-In what follows we quantify the changes induced by different effects.
+For $\beta>2$ the entropy for the clustered points starts to
+increase again, at a slower pace than it does for $\beta\leq 2$. 
+Another interesting point is that around $\beta=5$ the two entropies
+are equal.  
+This point corresponds to the extreme of a very sparse graph where the
+two different point distributions become indistinguishable from the
+point of view of the entropy. 
+
+
+The general shape shown in Figure \ref{fig:entropy} is conserved in
+all cases.  
+In what follows we quantify the entropy changes under different
+conditions.
 
 \subsection{Cosmic Variance}
 
@@ -428,25 +433,60 @@ of $\beta$.
 The entropy differences decrease with the number density. 
 The differences range between $0.05$ to $0.2$ bits.
 
-We checked that the entropy only changes significantly in the clustered points.
-If we compute the entropy on the spheres with random distribution of points 
-with varying number densities, then the entropy changes among those spheres 
-is only on the order of $0.01$ bits.
+A central result is that the entropy only changes significantly in the
+clustered points. 
+If we compute the entropy on the spheres with random distribution of
+points  with varying number densities, then the entropy changes among
+those spheres  is only on the order of $10^{-2}$ bits. 
 
-With this test we find that the entropy is sensitive to changes in the 
-dataset that are invisible to the two-point correlation function.
-Furthermore, these changes are only visible on points that are not randomly
-distributed.
-The main property that changes with the number density is the visual appearance of the
-cosmic web in the dataset. 
-As the number density decreases the voids in the distribution become
-larger and the filamentary patterns thinner.
-When we estimate the typical void size in the datasets with changing number 
-density, we find that the typical void size increases with decreasing number density, 
-as expected.
-The entropy changes we find here correlate inversely with void size: larger entropy 
-values correspond to smaller void sizes.
+\section{Discussion}
 
+\textbf{What is then the meaning of the entropy measured on graphs
+  built on LSS data?
+  The key to answer this question is that  the entropy is most
+  sensitive to changes in the number density of clustered points. 
+  and all other effects are secondary.}
+
+  
+\textbf{Visually speaking, changes in the number density clearly impact the
+  cosmic web defined by the tracers.
+  As the number density decreases the voids in the distribution become
+  larger and the filamentary patterns thinner. 
+  Can this visual impression be quantified?
+  As test we estimate the typical void size in the datasets with changing number 
+  density.  
+  We find that this quantity increases with decreasing number density, 
+  as expected.
+  Furthermore, larger entropy values correspond to smaller sizes for
+  this typical void.}
+
+\textbf{Another element to consider is that the cosmic web has broad
+  correlations with the local density. i.e. cluster-like regions are
+  overdense, voids are underdense while filaments and sheets have
+  intermediate densities \citep{2018MNRAS.473.1195L}. 
+  In the $\beta$-skeleton the point density is traced both by the number
+  of connections.
+  At fixed $\beta$, regions with larger number of connections are
+  denser. 
+  This means that the connectivity distribution is correlated
+  with the point density distribution.}
+
+\textbf{As a test of this qualitative statement we compute the Voronoi
+tesellation over the datasets already presented in this Letter. 
+We find that the distribution of the voronoi cell volumes has similar
+properties as the graph entropy: it is invariant for random points,
+weakly dependent on cosmic variance, geometry, RSD, redshift and
+cosmological parameters and strongly dependent on the number density
+of clustered points.}
+
+\textbf{In our case, as $\beta$ increases only denser regions
+  remain connected by the graph.
+This is equivalent to making different threshold cuts in a density
+field.
+The graph entropy as a function of $\beta$ can thus be seen as a
+the discrete equivalent of the cotinous operation of measuring the 
+connectivity of a continous density field with varying density
+threholds.}
 
 
 
@@ -465,18 +505,15 @@ We measured that the graph entropy is of order unity and ranges
 between $1.6$ and $3.2$ bits.
 Then we tested the influence on the graph entropy of six major factors: 
 cosmic variance, survey geometry, redshift space distortions, redshift evolution, cosmological parameters and number densities.
+We found that the strongest influence on the entropy appears in
+clustered data at different number  densities.
 
-We found that the weakest influence is presented by cosmic variance with changes 
-on the order of $10^{-3}$ bits.
-The next factors in order of importance were the survey geometry, RDS, redshift evolution,
-cosmological parameters with entropy changes on the order of $10^{-2}$ bits.
-The strongest influence on the entropy appears in clustered data at different number 
-densities.
-This difference is in the range of $0.05$ to $0.2$ bits.
+We suggestthat \textbf{the graph entropy as a
+  function of $\beta$ can be thought as the discrete equivalent 
+  of measuring the connectivity of a continous density field with
+  varying density threholds}. 
 
-From these results we conclude that graph entropy can be a useful scalar 
-to quantify the cosmic web. 
-On the other hand, using the graph entropy to disentangle different cosmological effects
+Using the graph entropy to disentangle different cosmological effects
 seems to be a more challenging task. 
 The influence of survey geometry, redshift evolution and cosmological parameters 
 all seem to be on the same order of magnitude when measured in the entropy.
