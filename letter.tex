@@ -77,11 +77,13 @@ $^{2}$School of Physics and Astronomy, Sun Yat-Sen University, Guangzhou 510297,
   changes from the survey geometry, redshift space distortions, cosmological 
   parameters and redshift evolution produce larger changes on the
   order of $10^{-2}$ bits.
-  We find that $\sigma_8$ shows the strongest correlation with the graph entropy.
   The largest influence on the graph entropy comes from changes in the 
   number density of clustered points, with effects on the order of $0.2$ bits.
-  These results show that the graph entropy is a promising new tool to probe the cosmic 
-  web; it is simple to compute and can be applied both to simulations and observational data 
+\textbf{From our findings we argue that the graph entropy can be thought as the discrete equivalent 
+  of quantifying the connectivity of a continous density field.
+  These results show that the graph entropy is a promising new tool to
+  probe the connectivity properties of clustered points.}
+  It is simple to compute and can be applied both to simulations and observational data 
   from large galaxy redshift surveys.
   This definition can be naturally applied to any graph built on other cosmological 
   probes such as cosmic microwave background maps, weak lensing maps or reconstructed
@@ -441,71 +443,57 @@ those spheres  is only on the order of $10^{-2}$ bits.
 
 \section{Discussion}
 
-\textbf{How can we interpret the entropy measured on the
-  $\beta$-skeleton graph built on LSS data?}
-
-\textbf{Let us recall that the $\beta$-skeleton graph encodes topological features in
+\textbf{From all these findings, how can we then interpret the entropy measured on the
+  $\beta$-skeleton graph built on LSS data?\\
+\indent
+Let us recall that the $\beta$-skeleton graph encodes topological features in
   the data.
-  Its entropy focuses on the connectivity distributions.
-  In the $\beta$-skeleton the point density correlates with the number
-  of connections.
-  At fixed $\beta$, regions with larger number of connections are
-  denser.}
-
-\textbf{This means that the connectivity distribution correlates
-  with the point density distribution.
+  Its entropy focuses on a single aspect: the connectivity distribution.
+  In the $\beta$-skeleton the number of connection correlates with the
+  point density.
+  At fixed $\beta$, regions with larger number of connections are in 
+  denser regions.
+  This means that the connectivity distribution traces to some extent
+  the point density distribution.
   The graph entropy at fixed $\beta$ can thus be thought as a summary
-  of the point density distribution.
-  As $\beta$ increases only the points in the densest regions remain
-  connected \citep{2019MNRAS.485.5276F}, that means that the entropy
-  as a function of $\beta$ describes the balance between the number of
-  densest regions in the point distribution (which are still
-  connected) and the low density regions (that are unconnected).} 
-
-
-\textbf{As a complementary test of this reasoning we computed the Voronoi
-tesellation over the datasets already presented in this Letter. 
+  statistic of the point density distribution.\\
+\indent
+  As $\beta$ increases, only the points in the densest regions remain
+  connected \citep{2019MNRAS.485.5276F}.
+  This means that the entropy as a function of $\beta$ describes the
+  balance between the number of 
+  overdense regions in the point distribution (which are still
+  connected) and the low density regions (that will be disconnected
+  for large values of $\beta$.)\\
+\indent
+As a complementary test of this reasoning we computed the Voronoi
+tesellation over the datasets used in this Letter. 
 We find that the distribution of the Voronoi cell volumes (a measure
 of point density, large volumes can be interpreted as low density regions) 
 has similar properties as the graph entropy; it is invariant for random points,
 weakly dependent on cosmic variance, geometry, RSD, redshift and
 cosmological parameters and strongly dependent on the number density
 of clustered points.
-Building the cell volume distributions only for the points included in
-the graph selects mostly regions of large density (small volumes) as
-$\beta$ increases.}
-
- 
-% The key to answer this question is that  the entropy is most
-%  sensitive to changes in the number density of clustered points
-%  and all other effects are secondary.
-  
-
-%Another element to consider is that the cosmic web has broad
-%  correlations with the local density. i.e. cluster-like regions are
-%  overdense, voids are underdense while filaments and sheets have
-%  intermediate densities \citep{2018MNRAS.473.1195L}. 
-
-  
-%\textbf{Visually speaking, changes in the number density clearly impact the
-%  cosmic web defined by the tracers.
-%  As the number density decreases the voids in the distribution become
-%  larger and the filamentary patterns thinner. 
-%  Can this visual impression be quantified?
-%  As test we estimate the typical void size in the datasets with changing number 
-%  density.  
-%  We find that this quantity increases with decreasing number density, 
-%  as expected.
-%  Furthermore, larger entropy values correspond to smaller sizes for
-%  this typical void.}
-
-
-
-
-\textbf{From this reasonning we suggest that the graph entropy as a
+Furthermore, as $\beta$ increases, the cell volume distributions for the points included in
+the graph selects mostly regions of large density (small volumes.)\\
+\indent
+Another point of view to consider is that the cosmic web has broad
+  correlations with the local density. i.e. cluster-like regions are
+  overdense, voids are underdense, while filaments and sheets have
+ intermediate densities \citep{2018MNRAS.473.1195L}. 
+ Changes in the number density clearly impact the cosmic web defined by the tracers.
+  As the number density decreases, we observe how the voids become
+  larger and the filamentary patterns are less pronounced.  
+  To quantify this visual impression we estimate the typical void size
+  in the datasets with changing number density.  
+  We find that this quantity increases with decreasing number density, 
+  as expected.
+  Larger entropy values correspond to smaller typical voids.\\
+\indent
+From these lines of reasoning we suggest that the graph entropy as a
   function of $\beta$ can thus be seen as a the discrete equivalent of
   the continous operation of measuring scalar topological invariants 
-  over a continous density field with varying density threholds.}
+  over a continous density field with varying density threholds \citep{2013JKAS...46..125P}.}
 
 
 
