@@ -326,20 +326,20 @@ Figure \ref{fig:entropy} shows the graph entropy as a function of $\beta$ for
 clustered and random points distributed over a sphere.
 The most important message from this plot is that the entropy can distinguish between
 clustered and random points.
-We see that the entropy follows a decreasing trend with increasing
-$\beta$ that seems to be interrupted when $\beta=2$ (the RNG), which
-represents a local minimum of the curve.  
+\textbf{This result immediately follows from the fact that the connectivity distribution of clustered and random points is different, $P_n$ follows a narrower distribution for random points than it does for clustered points.}
 
-This differentiates the point at which the constructed graph goes from
-being fully connected, to have some isolated nodes.
-\textbf{This change in the number of connections can be seen
-  in Figure \ref{fig:probabilities}.
-For $\beta\leq 2$ the probability of having $0$ connections is zero
-(i.e. the graph is fully connected), while for $\beta>2$ that
-probability is different from zero.}
 
-For $\beta>2$ the entropy for the clustered points starts to
-increase again, at a slower pace than it does for $\beta\leq 2$. 
+Figure \ref{fig:entropy} also shows that the entropy follows a decreasing trend with increasing $\beta$ that seems to be interrupted when $\beta=2$ (the RNG), which represents a local minimum of the curve.
+\textbf{The steep decreasing trend for $\beta<2$ is a direct consequence of the monotonic and strong decrease in the number of connections as $\beta$ increases.
+Figure \ref{fig:probabilities} shows how the connection distribution for in  becomes significantly narrower as $\beta$ goes from $1$ to $2$, explaining the entropy decrease.}
+
+\textbf{}
+For $\beta>2$ the same connection distribution does not become significantly narrower (it is hard to get points with much less than $n=4$ connections).
+At the same time, at $\beta=2$ the constructed graph goes from
+being fully connected ($P_0=0$) to have some isolated nodes ($P_0>0$) for $\beta>2$.
+These two facts (the impossibility of having a much narrower distribution and the availability of the new state $n=0$) account for the slow increase in the entropy for $\beta>2$.
+}
+
 Another interesting point is that around $\beta=5$ the two entropies
 are equal.  
 This point corresponds to the extreme of a very sparse graph where the
@@ -468,9 +468,9 @@ features from the data.
 \indent
 As a complementary test of this reasoning we computed the Voronoi
 tesellation over the datasets used in this Letter. 
-We find that the distribution of the Voronoi cell volumes (a measure
+We find that the shape of the distribution for the Voronoi cell volumes (a measure
 of point density; large volumes can be interpreted as low density regions) 
-has similar properties as the graph entropy; it is invariant for random points,
+has similar properties as the graph entropy; there is clear difference between clustered and random points; it is invariant for random points,
 weakly dependent on cosmic variance, geometry, RSD, redshift and
 cosmological parameters and strongly dependent on the number density
 of clustered points.
@@ -515,27 +515,17 @@ cosmic variance, survey geometry, redshift space distortions, redshift evolution
 We found that the strongest influence on the entropy appears in
 clustered data at different number  densities.
 
-Qualitatively speaking \textbf{the graph entropy as a
-  function of $\beta$ can be thought as the discrete analogue
-  of measuring the connectivity of a continous density field with
-  varying density threholds}. 
-
-Using the graph entropy to disentangle different cosmological effects
-seems to be a challenging task. 
-The influence of survey geometry, redshift evolution and cosmological parameters 
-all seem to be on the same order of magnitude when measured in the entropy.
-One way to make stand out an effect over the others (for instance, the influence of
-$\sigma_8$ over RSD) might be comparing the results of clustered measurements against
-a random counterpart with the same geometry and number density.
-
-Further tests of the applicability to observational data and other graphs 
-are necessary beyond the  promising results presented here.
-An incomplete list of experiments that might complement its usage in the context of
-cosmology are: using this entropy to check for isotropy (e.g. measuring the entropy from
-different parts of the sky); measuring the entropy in different modified gravity theories;
-building graphs and measuring the entropy from 
-other quantities, i.e. features in the Cosmic Microwave Background, weak lensing peaks,
-basin points from reconstructed peculiar velocity fields.
+\textbf{The graph entropy can be used as the discrete analogue
+  of measuring the connectivity in a continuous density field.
+  As such, it represents a new statistic that can be used in a complementary way to other kinds of topological measurements.\\
+ \indent
+ Further tests of the applicability to observational data and other graphs are necessary beyond the  promising results presented here.
+ Its generic usage can be the comparison of entropy measurements in observations against observations.\\
+ \indent
+ An incomplete list of experiments that might performed in the context of cosmology are:  comparing the entropy for mock and observed galaxy survey data to constrain bias models that appear indistinguishable using other statistics; measuring the entropy from different parts of the sky to check for isotropy; 
+building graphs from  other quantities (i.e. features in the Cosmic Microwave Background, weak lensing peaks,
+basin points from reconstructed peculiar velocity fields) to measure its entropy and quantify its connectivity properties.
+}
 
 \section*{Acknowledgements}
 XDL acknowledges the support from NSFC grant (No. 11803094).
