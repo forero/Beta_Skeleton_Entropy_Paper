@@ -70,7 +70,10 @@ $^{2}$School of Physics and Astronomy, Sun Yat-Sen University, Guangzhou 510297,
 \begin{abstract}
   We explore the information theory entropy of a graph as a scalar to
   quantify the cosmic web. 
-  We use simulations to gauge the influence of survey geometry, cosmic variance, 
+  \textbf{We argue that this entropy can be
+  used as a discrete analogue of scalars that quantify the cosmic web connectivity in continuous density fields. 
+ After showing that the entropy can clearly distinguish between clustered and random points, }
+  we use simulations to gauge in detail the influence of survey geometry, cosmic variance, 
   redshift space distortions, redshift evolution, cosmological parameters and 
   spatial number density.  
   Cosmic variance shows the least important influence while
@@ -78,15 +81,9 @@ $^{2}$School of Physics and Astronomy, Sun Yat-Sen University, Guangzhou 510297,
   parameters and redshift evolution produce larger changes on the
   order of $10^{-2}$ bits.
   The largest influence on the graph entropy comes from changes in the 
-  number density of clustered points, with effects on the order of $0.2$ bits.
-\textbf{The graph entropy can be
-  used a discrete analogue of scalars that quantify the connectivity in
-  continous density fields.}
-  It is simple to compute and can be applied both to simulations and observational data 
-  from large galaxy redshift surveys.
-  This definition can be naturally applied to any graph built on other cosmological 
-  probes such as cosmic microwave background maps, weak lensing maps or reconstructed
-  density and peculiar velocity fields.
+  number density of clustered points.
+  \textbf{As the number density decreases, and the cosmic web is less pronounced, the entropy can diminish up to $0.2$ bits.}
+ The graph entropy is a new statistic that can be used in a complementary way to other kinds of topological or clustering measurements; it is simple to compute and can be applied both to simulations and observational data from large galaxy redshift surveys.
 \end{abstract}
 \begin{keywords}
 cosmology: large-scale structure of Universe -- methods: data analysis.
@@ -324,26 +321,24 @@ Figure \ref{fig:entropy} shows the graph entropy as a function of $\beta$ for
 clustered and random points distributed over a sphere.
 The most important message from this plot is that the entropy can distinguish between
 clustered and random points.
-\textbf{This result immediately follows from the fact that the connectivity distribution of clustered and random points is different, $P_n$ follows a narrower distribution for random points than it does for clustered points.}
 
-
+\textbf{This result immediately follows from the fact that the connectivity distribution of clustered and random points is different, $P_n$ follows a narrower distribution for random points than it does for clustered points.\\
+\indent
 Figure \ref{fig:entropy} also shows that the entropy follows a decreasing trend with increasing $\beta$ that seems to be interrupted when $\beta=2$ (the RNG), which represents a local minimum of the curve.
-\textbf{The steep decreasing trend for $\beta<2$ is a direct consequence of the monotonic and strong decrease in the number of connections as $\beta$ increases.
-Figure \ref{fig:probabilities} shows how the connection distribution for in  becomes significantly narrower as $\beta$ goes from $1$ to $2$, explaining the entropy decrease.}
-
-\textbf{}
+The steep decreasing trend for $\beta<2$ is a direct consequence of the monotonic and strong decrease in the number of connections as $\beta$ increases.
+Figure \ref{fig:probabilities} shows how the connection distribution for in  becomes significantly narrower as $\beta$ goes from $1$ to $2$, explaining the entropy decrease.\\
+\indent
 For $\beta>2$ the same connection distribution does not become significantly narrower (it is hard to get points with much less than $n=4$ connections).
 At the same time, at $\beta=2$ the constructed graph goes from
 being fully connected ($P_0=0$) to have some isolated nodes ($P_0>0$) for $\beta>2$.
-These two facts (the impossibility of having a much narrower distribution and the availability of the new state $n=0$) account for the slow increase in the entropy for $\beta>2$.
-}
-
+These two facts (the impossibility of having a much narrower distribution and the availability of the new state $n=0$) account for the slow increase in the entropy for $\beta>2$.\\
+\indent
 Another interesting point is that around $\beta=5$ the two entropies
 are equal.  
 This point corresponds to the extreme of a very sparse graph where the
 two different point distributions become indistinguishable from the
 point of view of the entropy. 
-
+}
 
 The general shape shown in Figure \ref{fig:entropy} is conserved in
 all cases.  
@@ -520,7 +515,7 @@ clustered data at different number  densities.
   As such, it represents a new statistic that can be used in a complementary way to other kinds of topological measurements.\\
  \indent
  Further tests of the applicability to observational data and other graphs are necessary beyond the  promising results presented here.
- Its generic usage can be the comparison of entropy measurements in observations against observations.\\
+ Its generic usage can be the comparison of entropy measurements in simulation against observations.\\
  \indent
  An incomplete list of experiments that might performed in the context of cosmology are:  comparing the entropy for mock and observed galaxy survey data to constrain bias models that appear indistinguishable using other statistics; measuring the entropy from different parts of the sky to check for isotropy; 
 building graphs from  other quantities (i.e. features in the Cosmic Microwave Background, weak lensing peaks,
