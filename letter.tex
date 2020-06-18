@@ -79,10 +79,11 @@ $^{2}$School of Physics and Astronomy, Sun Yat-Sen University, Guangzhou 510297,
   order of $10^{-2}$ bits.
   The largest influence on the graph entropy comes from changes in the 
   number density of clustered points, with effects on the order of $0.2$ bits.
-\textbf{From our findings we argue that the graph entropy can be thought as the discrete equivalent 
-  of quantifying the connectivity of a continous density field.
+\textbf{We argue that the graph entropy can be
+  used a discrete analogue of scalars that quantify the topology in
+  continous density fields.
   These results show that the graph entropy is a promising new tool to
-  probe the connectivity properties of clustered points.}
+  probe the connectivity properties of discrete data.}
   It is simple to compute and can be applied both to simulations and observational data 
   from large galaxy redshift surveys.
   This definition can be naturally applied to any graph built on other cosmological 
@@ -102,16 +103,15 @@ The cosmic web is one of the most salient features of the matter distribution
 on cosmological scales. 
 There is a great variety of methods striving to locally describe this complex 
 structure by classifying a region as belonging either
-to a void, filament, wall or cluster
-\textbf{\citep{2018MNRAS.473.1195L, 2011MNRAS.414..350S}}. 
+to a void, filament, wall or cluster \citep{2018MNRAS.473.1195L}. 
 
-Global descriptors are also useful to describe the topological structure of this web.
+Global descriptors are also useful to measure the topological structure of this web.
 Quantities such as the topological invariants described by  the genus
 \citep{1986ApJ...309....1H, 1986ApJ...306..341G} the Minkowski functionals 
 \citep{1997ApJ...482L...1S}, the Betti numbers
-\citep{2013JKAS...46..125P,2017MNRAS.465.4281P}  \textbf{and the
-  skeleton formalism \citep{2008MNRAS.383.1655S}} have been widely
-applied to describe the cosmic web. 
+\citep{2013JKAS...46..125P,2017MNRAS.465.4281P}, \textbf{or the average
+number of filaments connected to a cluster \citep{2018MNRAS.479..973C}
+} have been widely applied to describe the cosmic web. 
 
 Another scalar, the information theory entropy based on the inhomogeneous 
 spatial matter density in the cosmic web,
@@ -133,12 +133,6 @@ length \citep{2016MNRAS.459.2690H} or the $\beta$-skeleton
 For any of those graphs one can estimate the probability of a point
 having $n$ connections, $P_n$, and from these values a global entropy
 can be defined as $S = \sum_{P_n>0}-P_n\log_2{P_n}$. 
-
-
-\textbf{It is already shown that the study of cosmic connectivity can
-  be useful to describe the cosmic web \citep{10.1093/mnras/stz3535}.
-  Therefore, for any of the mentioned graphs one can estimate ... para
-  meterlo en el parrafo de arriba. O ponerlo al final} 
 
 The purpose of this to letter is to advocate the information theory entropy on a graph
 as a global scalar to describe the cosmic web.
@@ -190,7 +184,7 @@ can be found in \citep{2019MNRAS.485.5276F}.
 
 After the graph has been constructed it is possible to estimate $P_n$, the probability of 
 a node to have $n$ connections.
-From these compute we define the graph entropy as
+From these values we define the graph entropy as
 
 \begin{equation}
 \centering
@@ -244,7 +238,7 @@ $\beta$-skeleton graphs built on data from an N-body simulation.
 \subsection{Simulations and Mock Catalogs}
 
 We use data products from the Abacus project \citep{abacus}.
-This project is a set of dark matter only N-body simulations that follows
+That project is a set of dark matter only N-body simulations that follows
 the growth of structure in an explicit cosmological setup.
 It includes simulations with different box sizes and cosmological parameters.
 
@@ -337,7 +331,7 @@ $\beta$ that seems to be interrupted when $\beta=2$ (the RNG), which
 represents a local minimum of the curve.  
 
 This differentiates the point at which the constructed graph goes from
-being fully connected, to have isolated nodes.
+being fully connected, to have some isolated nodes.
 \textbf{This change in the number of connections can be seen
   in Figure \ref{fig:probabilities}.
 For $\beta\leq 2$ the probability of having $0$ connections is zero
@@ -361,10 +355,12 @@ conditions.
 \subsection{Cosmic Variance}
 
 We measure the effects of cosmic variance by comparing the entropy of the spherical 
-mocks built from the $20$ different realizations of the standard cosmology at $z=0.1$ without considering the effects of RSD. 
-Panel $a)$ in Figure \ref{fig:diferencias} shows the entropy difference with respect to a reference mock.
-The variance of the entropy differences is on the order of $10^{-3}$ bits, almost 
-independent of $\beta$.
+mocks built from the $20$ different realizations of the standard
+cosmology at $z=0.1$ without considering the effects of RSD.  
+Panel $a)$ in Figure \ref{fig:diferencias} shows the entropy
+difference with respect to a reference mock. The variance of the
+entropy differences is on the order of $10^{-3}$ bits, almost
+independent of $\beta$. 
 The same result holds for mocks with shell geometry.
 
 
@@ -373,18 +369,22 @@ The same result holds for mocks with shell geometry.
 
 We evaluate geometry influence by comparing spheres and shells.
 We compare each spherical mock with its corresponding shell.
-This is done at $z=0.1$ without RSD effects over the $20$ different realization 
+This is done at $z=0.1$ without RSD effects over the $20$ different realizations
 of the standard cosmology.
-Panel $b)$ in Figure \ref{fig:diferencias} shows that the entropy difference has a strong dependence with $\beta$. 
-For $\beta=1$ points on the spherical distribution have $8\times 10^{-2}$ more bits of entropy than shells.
-For values around $\beta=2$ this difference drops to negative values (shells have more entropy than spheres) but only on the order of $1\times10^{-2}$ bits.
+Panel $b)$ in Figure \ref{fig:diferencias} shows that the entropy
+difference has a strong dependence with $\beta$.  
+For $\beta=1$ points on the spherical distribution have $8\times
+10^{-2}$ more bits of entropy than shells. 
+For values around $\beta=2$ this difference drops to negative values
+(shells have more entropy than spheres) but only on the order of
+$1\times10^{-2}$ bits. 
 
 
 
 
 \subsection{Redshift Space Distortions}
 
-We measured the RSD influence on the spheres extracted from the $20$ different realization of the standard cosmology at $z=0.1$.
+We measured the RSD influence on the spheres extracted from the $20$ different realizations of the standard cosmology at $z=0.1$.
 In the mock building process the RSD effect is applied before making the geometrical cut.
 Panel $c)$ in Figure \ref{fig:diferencias} shows a similar picture than the one found in the previous subsection.
 Namely, a strong dependence for $\beta\leq 2$, with more entropy in the data without RSD and a flat response for $\beta\geq 2$.
@@ -407,7 +407,7 @@ This redshift evolution is different for the $2$-skeleton and the $3$-skeleton; 
 are not monotonous and less pronounced.
 
 \subsection{Cosmological Parameters}
-The Abacus simulations have $40$ different realization with different values for the
+The Abacus simulations have $40$ different realizations with different values for the
 cosmological  parameters $H_0$, $\Omega_{DE}$, $\Omega_{M}$, $n_s$, $\sigma_8$ and $w_0$.
 We measure the entropy differences with respect to the entropy for the cosmology of 
 reference in the $40$ different spheres at $z=0.1$, without RSD effects, 
@@ -446,8 +446,8 @@ those spheres  is only on the order of $10^{-2}$ bits.
 \textbf{From all these findings, how can we then interpret the entropy measured on the
   $\beta$-skeleton graph built on LSS data?\\
 \indent
-Let us recall that the $\beta$-skeleton graph encodes topological features in
-  the data.
+Let us recall that the $\beta$-skeleton graph encodes topological
+features from the data.
   Its entropy focuses on a single aspect: the connectivity distribution.
   In the $\beta$-skeleton the number of connection correlates with the
   point density.
@@ -469,7 +469,7 @@ Let us recall that the $\beta$-skeleton graph encodes topological features in
 As a complementary test of this reasoning we computed the Voronoi
 tesellation over the datasets used in this Letter. 
 We find that the distribution of the Voronoi cell volumes (a measure
-of point density, large volumes can be interpreted as low density regions) 
+of point density; large volumes can be interpreted as low density regions) 
 has similar properties as the graph entropy; it is invariant for random points,
 weakly dependent on cosmic variance, geometry, RSD, redshift and
 cosmological parameters and strongly dependent on the number density
@@ -477,9 +477,9 @@ of clustered points.
 Furthermore, as $\beta$ increases, the cell volume distributions for the points included in
 the graph selects mostly regions of large density (small volumes.)\\
 \indent
-Another point of view to consider is that the cosmic web has broad
-  correlations with the local density. i.e. cluster-like regions are
-  overdense, voids are underdense, while filaments and sheets have
+A complementary point of view is to consider that the local density
+correlates with cosmic web features,
+i.e. cluster-like regions are overdense, voids are underdense, while filaments and sheets have
  intermediate densities \citep{2018MNRAS.473.1195L}. 
  Changes in the number density clearly impact the cosmic web defined by the tracers.
   As the number density decreases, we observe how the voids become
@@ -490,9 +490,9 @@ Another point of view to consider is that the cosmic web has broad
   as expected.
   Larger entropy values correspond to smaller typical voids.\\
 \indent
-From these lines of reasoning we suggest that the graph entropy as a
-  function of $\beta$ can thus be seen as a the discrete equivalent of
-  the continous operation of measuring scalar topological invariants 
+From these lines of reasoning we argue that the graph entropy as a
+  function of $\beta$ can be seen as a the discrete analgoue of
+  the measuring scalar topological invariants 
   over a continous density field with varying density threholds \citep{2013JKAS...46..125P}.}
 
 
@@ -516,7 +516,7 @@ We found that the strongest influence on the entropy appears in
 clustered data at different number  densities.
 
 Qualitatively speaking \textbf{the graph entropy as a
-  function of $\beta$ can be thought as the discrete equivalent 
+  function of $\beta$ can be thought as the discrete analogue
   of measuring the connectivity of a continous density field with
   varying density threholds}. 
 
