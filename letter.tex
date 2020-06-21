@@ -70,9 +70,9 @@ $^{2}$School of Physics and Astronomy, Sun Yat-Sen University, Guangzhou 510297,
 \begin{abstract}
   We explore the information theory entropy of a graph as a scalar to
   quantify the cosmic web. 
-  \textbf{We argue that this entropy can be
-  used as a discrete analogue of scalars that quantify the cosmic web connectivity in continuous density fields. 
- After showing that the entropy can clearly distinguish between clustered and random points, }
+  \textbf{We find cosmic web graph entropy values in the range between 1.5 and 3.2 bits. We argue that this entropy can be
+  used as a discrete analogue of scalars used to quantify the connectivity in continuous density fields. 
+  After showing that the entropy clearly distinguishes between clustered and random points, }
   we use simulations to gauge in detail the influence of survey geometry, cosmic variance, 
   redshift space distortions, redshift evolution, cosmological parameters and 
   spatial number density.  
@@ -83,7 +83,7 @@ $^{2}$School of Physics and Astronomy, Sun Yat-Sen University, Guangzhou 510297,
   The largest influence on the graph entropy comes from changes in the 
   number density of clustered points.
   \textbf{As the number density decreases, and the cosmic web is less pronounced, the entropy can diminish up to $0.2$ bits.}
- The graph entropy is a new statistic that can be used in a complementary way to other kinds of topological or clustering measurements; it is simple to compute and can be applied both to simulations and observational data from large galaxy redshift surveys.
+ The graph entropy is simple to compute and can be applied both to simulations and observational data from large galaxy redshift surveys; it is a new statistic that can be used in a complementary way to other kinds of topological or clustering measurements. 
 \end{abstract}
 \begin{keywords}
 cosmology: large-scale structure of Universe -- methods: data analysis.
@@ -106,7 +106,7 @@ Quantities such as the topological invariants described by  the genus
 \citep{1997ApJ...482L...1S}, the Betti numbers
 \citep{2013JKAS...46..125P,2017MNRAS.465.4281P}, \textbf{or the average
 number of filaments connected to a cluster \citep{2018MNRAS.479..973C}
-} have been widely applied to describe the cosmic web. 
+}, have been widely applied to describe the cosmic web. 
 
 Another scalar, the information theory entropy based on the inhomogeneous 
 spatial matter density in the cosmic web,
@@ -129,7 +129,7 @@ For any of those graphs one can estimate the probability of a point
 having $n$ connections, $P_n$, and from these values a global entropy
 can be defined as $S = \sum_{P_n>0}-P_n\log_2{P_n}$. 
 
-The purpose of this to letter is to advocate the information theory entropy on a graph
+The purpose of this letter is to advocate the information theory entropy on a graph
 as a global scalar to describe the cosmic web.
 We use the $\beta$-skeleton graph to explore a whole graph family 
 by varying the real valued parameter $\beta$.
@@ -154,16 +154,13 @@ To define whether a pair of points is connected by an edge, the
 algorithm defines an exclusion region that changes with $\beta$.  
 If the region is empty, then the two points are joined.
 \textbf{We use the so-called \emph{lune} definition for this exclusion region.
-The lune is defined as the intersection of two congruent spheres that
-pass through the two points under consideration.}
+The lune is defined as the intersection of two congruent spheres build over the points under consideration.}
 
-\textbf{Figure \ref{fig:example} illustrates how the exclusion region changes
+\textbf{Figure \ref{fig:example} illustrates how the spheres are built and how they change 
 with $\beta$.
 The diameter, $D$, of the spheres (circles in 2D) depends on the
 distance between the two points, $d$, and the value of $\beta$; for
-$\beta \leq 1$, $D=d/\beta$ and $D=d\beta$, otherwise.
-The 1-Skeleton is also known as the Gabriel Graph, while the
-$2$-skeleton corresponds to the Relative Neighbor Graph (RNG). }
+$\beta \leq 1$, $D=d/\beta$ and $D=d\beta$, otherwise.}
 
 \textbf{Under this definition the volume of the exclusion region is a
 monotonic function of $\beta$.}
@@ -208,15 +205,6 @@ $\beta$-skeleton graphs built on data from an N-body simulation.
  \label{fig:example}}  
 \end{figure} 
 
-%\begin{figure*}
-%    \centering
-%    \includegraphics[width=1.0\textwidth]{beta123_2.pdf}
-%    \caption{$\beta$-Skeleton graph for a set of dark matter halos arranged over a shell
-%    with inner radius $250$ \Mpch and outer radius $300$ \Mpch.
-%    Each panel correspond to different values values of $\beta$ ($1$, $2$ and $\beta=3$).The case of $\beta=2$ corresponds to the Relative Neighbor Graph.
-%    As $\beta$ increases links between nodes are lost. The probability of being a node with $n$ connections changes with $\beta$.}
-%\label{fig:connectionsBeta}
-%\end{figure*}
 
 \begin{figure}
     \includegraphics[width=0.45\textwidth]{probabilities.pdf}
@@ -237,7 +225,7 @@ That project is a set of dark matter only N-body simulations that follows
 the growth of structure in an explicit cosmological setup.
 It includes simulations with different box sizes and cosmological parameters.
 
-Here we focus on the simulations done a cubic box of $720$\Mpch on a side
+Here we focus on the simulations done in a cubic box of $720$\Mpch on a side
 with $1440^3$ particles. 
 This resolution corresponds to a particle mass of $\sim1\times10^{10}$ \Msunh.
 The same box was run with $20$ different initial conditions at a fixed value for
@@ -322,22 +310,22 @@ clustered and random points distributed over a sphere.
 The most important message from this plot is that the entropy can distinguish between
 clustered and random points.
 
-\textbf{This result immediately follows from the fact that the connectivity distribution of clustered and random points is different, $P_n$ follows a narrower distribution for random points than it does for clustered points.\\
+\textbf{This result immediately follows from the fact that the connectivity distribution of clustered and random points is different. 
+$P_n$ follows a narrower distribution for random points than it does for clustered points.\\
 \indent
-Figure \ref{fig:entropy} also shows that the entropy follows a decreasing trend with increasing $\beta$ that seems to be interrupted when $\beta=2$ (the RNG), which represents a local minimum of the curve.
+Figure \ref{fig:entropy} also shows that the entropy follows a decreasing trend with increasing $\beta$ that seems to be interrupted when $\beta=2$, which represents a local minimum of the curve.
 The steep decreasing trend for $\beta<2$ is a direct consequence of the monotonic and strong decrease in the number of connections as $\beta$ increases.
-Figure \ref{fig:probabilities} shows how the connection distribution for in  becomes significantly narrower as $\beta$ goes from $1$ to $2$, explaining the entropy decrease.\\
+Figure \ref{fig:probabilities} shows how the connection distribution becomes significantly narrower as $\beta$ goes from $1$ to $2$, explaining the entropy decrease.\\
 \indent
-For $\beta>2$ the same connection distribution does not become significantly narrower (it is hard to get points with much less than $n=4$ connections).
+For $\beta>2$ the same connectivity distribution does not become significantly narrower (it is hard to get points with much less than $n=4$ connections).
 At the same time, at $\beta=2$ the constructed graph goes from
 being fully connected ($P_0=0$) to have some isolated nodes ($P_0>0$) for $\beta>2$.
 These two facts (the impossibility of having a much narrower distribution and the availability of the new state $n=0$) account for the slow increase in the entropy for $\beta>2$.\\
 \indent
 Another interesting point is that around $\beta=5$ the two entropies
 are equal.  
-This point corresponds to the extreme of a very sparse graph where the
-two different point distributions become indistinguishable from the
-point of view of the entropy. 
+This corresponds to the extreme of a very sparse graph where the
+clustered and random point distributions become indistinguishable from the point of view of the entropy. 
 }
 
 The general shape shown in Figure \ref{fig:entropy} is conserved in
@@ -436,22 +424,17 @@ those spheres  is only on the order of $10^{-2}$ bits.
 
 \section{Discussion}
 
-\textbf{From all these findings, how can we then interpret the entropy measured on the
-  $\beta$-skeleton graph built on LSS data?\\
-\indent
-Let us recall that the $\beta$-skeleton graph encodes topological
+\textbf{From all these findings, how do we interpret the entropy measured on the graphs built from 3D points?
+Let us recall that the graph encodes topological
 features from the data.
-  Its entropy focuses on a single aspect: the connectivity distribution.
-  In the $\beta$-skeleton the number of connection correlates with the
-  point density.
-  At fixed $\beta$, regions with larger number of connections are in 
-  denser regions.
-  This means that the connectivity distribution traces to some extent
-  the point density distribution.
-  The graph entropy at fixed $\beta$ can thus be thought as a summary
+  Its entropy focuses on a single aspect: the connectivity distribution.\\
+\indent 
+In a graph regions with larger number of connections tend to be in regions with high number density.
+It means that the connectivity distribution traces to some extent the point density distribution.
+  The graph entropy can be thought as a summary
   statistic of the point density distribution.\\
 \indent
-  As $\beta$ increases, only the points in the densest regions remain
+  For the $\beta$-skeleton graph, as $\beta$ increases, only the points in the densest regions remain
   connected \citep{2019MNRAS.485.5276F}.
   This means that the entropy as a function of $\beta$ describes the
   balance between the number of 
@@ -459,11 +442,10 @@ features from the data.
   connected) and the low density regions (that will be disconnected
   for large values of $\beta$.)\\
 \indent
-As a complementary test of this reasoning we computed the Voronoi
-tesellation over the datasets used in this Letter. 
+As an additional test of this reasoning we computed the Voronoi tesellation over the datasets used in this Letter. 
 We find that the shape of the distribution for the Voronoi cell volumes (a measure
 of point density; large volumes can be interpreted as low density regions) 
-has similar properties as the graph entropy; there is clear difference between clustered and random points; it is invariant for random points,
+has similar properties as the graph entropy: there is clear difference between clustered and random points, it is invariant for random points,
 weakly dependent on cosmic variance, geometry, RSD, redshift and
 cosmological parameters and strongly dependent on the number density
 of clustered points.
@@ -475,20 +457,16 @@ correlates with cosmic web features,
 i.e. cluster-like regions are overdense, voids are underdense, while filaments and sheets have
  intermediate densities \citep{2018MNRAS.473.1195L}. 
  Changes in the number density clearly impact the cosmic web defined by the tracers.
-  As the number density decreases, we observe how the voids become
+  As we sample the input data and the number density decreases, we observe how the voids become
   larger and the filamentary patterns are less pronounced.  
-  To quantify this visual impression we estimate the typical void size
+  To quantify this visual impression we estimated the typical void size
   (in units of mean interparticle distance)
   in the datasets with changing number density.  
-  We find that for clustered points this quantity increases with
-  decreasing number density and stays constant for random points,
-  as expected.
-  In clustered data, larger entropy values correspond to smaller voids.\\
+We find that for clustered points larger entropy values correspond to smaller voids and for random points the dimensionless void size remains the same, as expected.\\
 \indent
-From these lines of reasoning we argue that the graph entropy as a
-  function of $\beta$ can be seen as a the discrete analgoue of
-  the measuring scalar topological invariants 
-  over a continous density field with varying density threholds \citep{2013JKAS...46..125P}.}
+From this discussion we argue that the graph entropy as a function of $\beta$ can be seen as the discrete analogue of
+  measuring the connectivity 
+  over a continuous density field with varying density thresholds \citep{2013JKAS...46..125P}.}
 
 
 
@@ -496,28 +474,27 @@ From these lines of reasoning we argue that the graph entropy as a
 
 In this letter we presented the graph entropy as a new scalar to 
 quantify the large scale structure of the Universe.
-The entropy definitions we use is a global quantity based on 
-the definition commonly used in information theory.
+The entropy definition we use is a global quantity based on 
+the concept commonly used in information theory.
 It uses the probability of having $n$ connections, $P_n$, to build the 
 scalar $S=\sum_{P_n>0} -P_n  \log_2 P_n$. 
 We based our quantitative analysis on the $\beta$-skeleton graph 
 built on mock catalogs constructed from cosmological N-body simulations.
 
 We measured that the graph entropy is of order unity and ranges 
-between $1.6$ and $3.2$ bits.
+between $1.5$ and $3.2$ bits.
+We found that it can clearly distinguish between random and clustered points.
 Then we tested the influence on the graph entropy of six major factors: 
 cosmic variance, survey geometry, redshift space distortions, redshift evolution, cosmological parameters and number densities.
 We found that the strongest influence on the entropy appears in
-clustered data at different number  densities.
+clustered data at different number densities.
 
 \textbf{The graph entropy can be used as the discrete analogue
   of measuring the connectivity in a continuous density field.
   As such, it represents a new statistic that can be used in a complementary way to other kinds of topological measurements.\\
  \indent
- Further tests of the applicability to observational data and other graphs are necessary beyond the  promising results presented here.
- Its generic usage can be the comparison of entropy measurements in simulation against observations.\\
- \indent
- An incomplete list of experiments that might performed in the context of cosmology are:  comparing the entropy for mock and observed galaxy survey data to constrain bias models that appear indistinguishable using other statistics; measuring the entropy from different parts of the sky to check for isotropy; 
+ Further tests of the applicability to observational data and other graphs are necessary beyond the results presented here.
+  An incomplete list of experiments that might be performed in the context of cosmology are:  comparing the entropy for mock and observed galaxy survey data to constrain bias models that appear indistinguishable using other statistics; measuring the entropy from different parts of the sky to check for isotropy; 
 building graphs from  other quantities (i.e. features in the Cosmic Microwave Background, weak lensing peaks,
 basin points from reconstructed peculiar velocity fields) to measure its entropy and quantify its connectivity properties.
 }
